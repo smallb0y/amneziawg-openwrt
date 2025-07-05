@@ -206,9 +206,10 @@ build-amneziawg: ## Build amneziawg-openwrt kernel module and packages
 	./scripts/feeds update ; \
 	./scripts/feeds install -a ; \
 	mv .config.old .config ; \
+	echo "CONFIG_PACKAGE_mqttled=n" >> .config ; \
 	echo "CONFIG_PACKAGE_kmod-amneziawg=m" >> .config ; \
-	echo "CONFIG_PACKAGE_amneziawg-tools=y" >> .config ; \
-	echo "CONFIG_PACKAGE_luci-proto-amneziawg=y" >> .config ; \
+	echo "CONFIG_PACKAGE_amneziawg-tools=m" >> .config ; \
+	echo "CONFIG_PACKAGE_luci-proto-amneziawg=m" >> .config ; \
 	make defconfig ; \
 	make V=s package/kmod-amneziawg/clean ; \
 	make V=s package/kmod-amneziawg/download ; \
