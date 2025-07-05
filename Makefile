@@ -10,8 +10,8 @@ AMNEZIAWG_DSTDIR ?= $(UPPERDIR)/awgrelease
 
 OPENWRT_RELEASE   ?= SNAPSHOT
 OPENWRT_ARCH      ?= aarch64_cortex-a53
-OPENWRT_TARGET    ?= mediatek
-OPENWRT_SUBTARGET ?= filogic
+OPENWRT_TARGET    ?= qualcommax
+OPENWRT_SUBTARGET ?= ipq807x
 OPENWRT_VERMAGIC  ?= any
 
 GITHUB_SHA        ?= $(shell git rev-parse --short HEAD)
@@ -232,9 +232,9 @@ prepare-artifacts: ## Save amneziawg-openwrt artifacts from regular builds
 	VERMAGIC=$$(cat ./build_dir/target-$(OPENWRT_ARCH)*/linux-$(OPENWRT_TARGET)_$(OPENWRT_SUBTARGET)/linux-*/.vermagic) ; \
 	echo "Vermagic: $${VERMAGIC}" ; \
 	mkdir -p $(AMNEZIAWG_DSTDIR) ; \
-	cp bin/packages/$(OPENWRT_ARCH)/awgopenwrt/amneziawg-tools_*.ipk $(AMNEZIAWG_DSTDIR)/amneziawg-tools_$(POSTFIX)_$${VERMAGIC}.ipk ; \
-	cp bin/packages/$(OPENWRT_ARCH)/awgopenwrt/luci-proto-amneziawg_*.ipk $(AMNEZIAWG_DSTDIR)/luci-proto-amneziawg_$(POSTFIX)_$${VERMAGIC}.ipk ; \
-	cp bin/targets/$(OPENWRT_TARGET)/$(OPENWRT_SUBTARGET)/packages/kmod-amneziawg_*.ipk $(AMNEZIAWG_DSTDIR)/kmod-amneziawg_$(POSTFIX)_$${VERMAGIC}.ipk ; \
+	cp bin/packages/$(OPENWRT_ARCH)/awgopenwrt/amneziawg-tools_*.apk $(AMNEZIAWG_DSTDIR)/amneziawg-tools_$(POSTFIX)_$${VERMAGIC}.apk ; \
+	cp bin/packages/$(OPENWRT_ARCH)/awgopenwrt/luci-proto-amneziawg_*.apk $(AMNEZIAWG_DSTDIR)/luci-proto-amneziawg_$(POSTFIX)_$${VERMAGIC}.apk ; \
+	cp bin/targets/$(OPENWRT_TARGET)/$(OPENWRT_SUBTARGET)/packages/kmod-amneziawg_*.apk $(AMNEZIAWG_DSTDIR)/kmod-amneziawg_$(POSTFIX)_$${VERMAGIC}.apk ; \
 	}
 
 .PHONY: check-release
@@ -263,7 +263,7 @@ prepare-release: check-release ## Save amneziawg-openwrt artifacts from tagged r
 	set -ex ; \
 	cd $(OPENWRT_SRCDIR) ; \
 	mkdir -p $(AMNEZIAWG_DSTDIR) ; \
-	cp bin/packages/$(OPENWRT_ARCH)/awgopenwrt/amneziawg-tools_*.ipk $(AMNEZIAWG_DSTDIR)/amneziawg-tools_$(POSTFIX_RELEASE).ipk ; \
-	cp bin/packages/$(OPENWRT_ARCH)/awgopenwrt/luci-proto-amneziawg_*.ipk $(AMNEZIAWG_DSTDIR)/luci-proto-amneziawg_$(POSTFIX_RELEASE).ipk ; \
-	cp bin/targets/$(OPENWRT_TARGET)/$(OPENWRT_SUBTARGET)/packages/kmod-amneziawg_*.ipk $(AMNEZIAWG_DSTDIR)/kmod-amneziawg_$(POSTFIX_RELEASE).ipk ; \
+	cp bin/packages/$(OPENWRT_ARCH)/awgopenwrt/amneziawg-tools_*.apk $(AMNEZIAWG_DSTDIR)/amneziawg-tools_$(POSTFIX_RELEASE).apk ; \
+	cp bin/packages/$(OPENWRT_ARCH)/awgopenwrt/luci-proto-amneziawg_*.apk $(AMNEZIAWG_DSTDIR)/luci-proto-amneziawg_$(POSTFIX_RELEASE).apk ; \
+	cp bin/targets/$(OPENWRT_TARGET)/$(OPENWRT_SUBTARGET)/packages/kmod-amneziawg_*.apk $(AMNEZIAWG_DSTDIR)/kmod-amneziawg_$(POSTFIX_RELEASE).apk ; \
 	}
