@@ -142,6 +142,7 @@ $(OPENWRT_SRCDIR)/.config: | $(OPENWRT_SRCDIR)
 	echo "CONFIG_PACKAGE_kmod-crypto-lib-chacha20=m" >> $@ ; \
 	echo "CONFIG_PACKAGE_kmod-crypto-lib-chacha20poly1305=m" >> $@ ; \
 	echo "CONFIG_PACKAGE_kmod-crypto-chacha20poly1305=m" >> $@ ; \
+	echo "CONFIG_PACKAGE_mqttled=n" >> .config ; \
 	}
 
 .PHONY: build-toolchain
@@ -206,7 +207,6 @@ build-amneziawg: ## Build amneziawg-openwrt kernel module and packages
 	./scripts/feeds update ; \
 	./scripts/feeds install -a ; \
 	mv .config.old .config ; \
-	echo "CONFIG_PACKAGE_mqttled=n" >> .config ; \
 	echo "CONFIG_PACKAGE_kmod-amneziawg=m" >> .config ; \
 	echo "CONFIG_PACKAGE_amneziawg-tools=m" >> .config ; \
 	echo "CONFIG_PACKAGE_luci-proto-amneziawg=m" >> .config ; \
