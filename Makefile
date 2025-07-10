@@ -208,21 +208,21 @@ build-amneziawg: ## Build amneziawg-openwrt kernel module and packages
 	./scripts/feeds install -a ; \
 	mv .config.old .config ; \
 	echo "CONFIG_PACKAGE_kmod-amneziawg=m" >> .config ; \
-	echo "CONFIG_PACKAGE_amneziawg-tools=m" >> .config ; \
-	echo "CONFIG_PACKAGE_luci-proto-amneziawg=m" >> .config ; \
+	## echo "CONFIG_PACKAGE_amneziawg-tools=m" >> .config ; \
+	## echo "CONFIG_PACKAGE_luci-proto-amneziawg=m" >> .config ; \
 	make defconfig ; \
 	make V=s package/kmod-amneziawg/clean ; \
 	make V=s package/kmod-amneziawg/download ; \
 	make V=s package/kmod-amneziawg/prepare ; \
 	make V=s package/kmod-amneziawg/compile ; \
-	make V=s package/luci-proto-amneziawg/clean ; \
-	make V=s package/luci-proto-amneziawg/download ; \
-	make V=s package/luci-proto-amneziawg/prepare ; \
-	make V=s package/luci-proto-amneziawg/compile ; \
-	make V=s package/amneziawg-tools/clean ; \
-	make V=s package/amneziawg-tools/download ; \
-	make V=s package/amneziawg-tools/prepare ; \
-	make V=s package/amneziawg-tools/compile ; \
+	##make V=s package/luci-proto-amneziawg/clean ; \
+	##make V=s package/luci-proto-amneziawg/download ; \
+	##make V=s package/luci-proto-amneziawg/prepare ; \
+	##make V=s package/luci-proto-amneziawg/compile ; \
+	##make V=s package/amneziawg-tools/clean ; \
+	##make V=s package/amneziawg-tools/download ; \
+	##make V=s package/amneziawg-tools/prepare ; \
+	##make V=s package/amneziawg-tools/compile ; \
 	}
 
 .PHONY: prepare-artifacts
